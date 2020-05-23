@@ -11,12 +11,12 @@
 * **利用 inRange 函数设阈值,获得二值化图像**
 
   `mask = cv2.inRange(hsv,lower,upper)`
-
-​		第一个参数: hsv 为原图
-
-​		第二和第三个参数: lower 和 upper 为阈值,把图像在这个范围内的 hsv 值改为255,否则改为0
-
-​		lower和 upper 都是数组,可以用 numpy.array([x, x, x]) 来定义
+  
+  第一个参数: hsv 为原图
+  
+  第二和第三个参数: lower 和 upper 为阈值,把图像在这个范围内的 hsv 值改为255,否则改为0
+  
+  lower和 upper 都是数组,可以用 numpy.array([x, x, x]) 来定义
 
 ***
 
