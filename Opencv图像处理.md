@@ -2,27 +2,27 @@
 
 #### 1. 二值化图像
 
-[参考地址](https://blog.csdn.net/hjxu2016/article/details/77834599)
+​		[参考地址](https://blog.csdn.net/hjxu2016/article/details/77834599)
 
-先将rgb图像转化为hsv图像
+*  **将rgb图像转化为hsv图像**
 
-`hsv = cv2.cvtColor(rgb_image,cv2.COLOR_RGB2HSV)`
+​		`hsv = cv2.cvtColor(rgb_image,cv2.COLOR_RGB2HSV)`
 
-再利用inRange函数设阈值,获得二值化图像
+* **利用 inRange 函数设阈值,获得二值化图像**
 
-`mask = cv2.inRange(hsv,lower,upper)`
+​		`mask = cv2.inRange(hsv,lower,upper)`
 
-第一个参数: hsv 为原图
+​		第一个参数: hsv 为原图
 
-第二和第三个参数: lower 和 upper 为阈值,把图像在这个范围内的hsv值改为255,否则改为0
+​		第二和第三个参数: lower 和 upper 为阈值,把图像在这个范围内的 hsv 值改为255,否则改为0
 
-lower 和 upper 都是数组,可以用 numpy.array([x, x, x])来定义
+​		lower和 upper 都是数组,可以用 numpy.array([x, x, x]) 来定义
 
 ***
 
 #### 2. 形态学操作
 
-* **腐蚀与膨胀**
+* **图像的腐蚀与膨胀**
 
   [参考地址](https://blog.csdn.net/hjxu2016/article/details/77837765)
 
