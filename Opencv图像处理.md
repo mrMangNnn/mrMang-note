@@ -12,15 +12,15 @@
 
 * **将rgb图像转化为hsv图像**
 
-  `hsv = cv2.cvtColor(rgb_image,cv2.COLOR_RGB2HSV)`
+  `niubi = cv2.cvtColor(rgb_image,cv2.COLOR_RGB2HSV)`
 
 * **利用 inRange 函数设阈值,获得二值化图像**
 
   [参考地址](https://blog.csdn.net/hjxu2016/article/details/77834599)
   
-  `mask = cv2.inRange(hsv,lower,upper)`
+  `mask = cv2.inRange(niubi,lower,upper)`
   
-  第一个参数: hsv 为原图
+  第一个参数: niubi 为 hsv 图像
   
   第二和第三个参数: lower , upper 为阈值,把图像在这个范围内的 hsv 值改为255,否则改为0
   
