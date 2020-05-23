@@ -63,3 +63,43 @@
   > **开运算的作用是在消除细小噪点的情况下不明显影响目标物体的体积**
   >
   > **闭运算的作用是在填补细小空洞的情况下不明显影响目标物体的体积**
+
+***
+
+#### 3.滑动条操作
+
+ * **创建滑动条**
+
+   创建窗口
+
+   `cv.namedWindow('niubi')`
+
+   设置滑动条参数
+
+   `cv.createTrackbar('name','niubi',initial_value,max_value,Callable)`
+
+   第一个参数: name 为该滑动条的名字
+
+   第二个参数: niubi 为该滑动条所处窗口的名字
+
+   第三个参数: initial_value 为滑动条上的初始值
+
+   第四个参数: max_value 为滑动条的最大值
+
+   第五个参数: Callable 为回调函数,创建一个pass函数即可
+
+   > `def Callable():`
+   >
+   > ​	`pass`
+
+ * **调用滑动条**
+
+   读取滑动条数据
+
+   `current_value = cv.getTrackbarPos('name','niubi')`
+
+   第一个参数: name 为要读取的滑动条的名字
+
+   第二个参数: niubi 为要读取的滑动条所处窗口的名字
+
+   
