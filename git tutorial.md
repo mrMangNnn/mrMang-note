@@ -6,7 +6,7 @@
 
 * **在Linux上安装git**
 
-  `sudo apt-get install git`
+  ​	`sudo apt-get install git`
 
   
 
