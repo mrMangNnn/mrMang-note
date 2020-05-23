@@ -4,13 +4,13 @@
 
 ​		[参考地址](https://blog.csdn.net/hjxu2016/article/details/77834599)
 
-*  **将rgb图像转化为hsv图像**
+* **将rgb图像转化为hsv图像**
 
-​		`hsv = cv2.cvtColor(rgb_image,cv2.COLOR_RGB2HSV)`
+  `hsv = cv2.cvtColor(rgb_image,cv2.COLOR_RGB2HSV)`
 
 * **利用 inRange 函数设阈值,获得二值化图像**
 
-​		`mask = cv2.inRange(hsv,lower,upper)`
+  `mask = cv2.inRange(hsv,lower,upper)`
 
 ​		第一个参数: hsv 为原图
 
