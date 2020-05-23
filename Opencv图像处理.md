@@ -8,6 +8,8 @@
 
 ​		`cv.waitKey(0)  ##等待用户按任意键继续,不会打断图片显示，显示视频时需设置大于0的参数`
 
+​		`niubi = cv2.cvtColor(image,cv2.COLOR_RGB2GRAY)  ##将rgb图像转化为灰度图`
+
 #### 2. 二值化图像
 
 * **将rgb图像转化为hsv图像**
@@ -147,4 +149,37 @@
    第五个参数: method 定义轮廓的近似方法
 
    第六个参数: Point 在每一个检测出的轮廓点上加上该偏移量,一般直接忽略
+   
+   opencv2.x中返回值为 contours, hierarchy,第一个返回值为轮廓的点集,第二个返回值为各个轮廓的编号
 
+* **轮廓特征**
+
+  [参考链接](https://www.jianshu.com/p/6a71aceb8da6)
+
+  计算轮廓面积
+
+  `area = contourArea(contour,bool oriented = False)`
+
+  第一个参数: contour 为目标轮廓
+
+  第二个参数一般直接用默认的False
+
+  计算轮廓周长
+
+  `perimeter = cv2.arcLength(contour,True)`
+
+  第一个参数: contour 为目标轮廓
+
+  第二个参数: True 表示轮廓是否闭合,不闭合则用False
+
+  图像矩
+
+  `niubi = cv2.moments(contour)`
+
+  > **利用niubi可以计算出轮廓质心的坐标**
+  >
+  > **`cx=int(M['m10']/M['m00'])`**
+  >
+  > **`cy=int(M['m01']/M['m00'])`**
+
+  
