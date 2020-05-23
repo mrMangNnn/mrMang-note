@@ -1,6 +1,14 @@
 ## Opencv图像处理
 
-#### 1. 二值化图像
+#### 1.基本操作
+
+​		`cap = cv.VideoCapture(0)  ##打开摄像头`
+
+​		`cv2.imshow('name',image)  ##将image显示在名为name的窗口上,利用循环可输出视频`
+
+​		`cv.waitKey(0)  ##等待用户按任意键继续,不会打断图片显示，显示视频时需设置大于0的参数`
+
+#### 2. 二值化图像
 
 ​		[参考地址](https://blog.csdn.net/hjxu2016/article/details/77834599)
 
@@ -14,13 +22,13 @@
   
   第一个参数: hsv 为原图
   
-  第二和第三个参数: lower 和 upper 为阈值,把图像在这个范围内的 hsv 值改为255,否则改为0
+  第二和第三个参数: lower , upper 为阈值,把图像在这个范围内的 hsv 值改为255,否则改为0
   
   lower和 upper 都是数组,可以用 numpy.array([x, x, x]) 来定义
 
 ***
 
-#### 2. 形态学操作
+#### 3. 形态学操作
 
 * **图像的腐蚀与膨胀**
 
@@ -66,7 +74,7 @@
 
 ***
 
-#### 3.滑动条操作
+#### 4.滑动条操作
 
  * **创建滑动条**
 
@@ -102,4 +110,41 @@
 
    第二个参数: niubi 为要读取的滑动条所处窗口的名字
 
-   
+***
+
+#### 5.边缘操作
+
+* **边缘检测**
+
+  [参考链接](https://blog.csdn.net/saltriver/article/details/80545571)
+
+  高斯降噪
+
+  `xiuer = cv2.GaussianBlur(image,(5,5),0)`
+
+  需要注意的是第二个参数 (x , y) 必须为奇数
+
+  Canny检测
+
+  `canny = cv2.Canny(xiuer,low,high)`
+
+  第一个参数: xiuer 为经过降噪的图
+
+  第二和第三个参数: low , high 为检测的低阈值和高阈值
+
+ * **寻找轮廓findContours**
+
+   [参考链接](https://blog.csdn.net/dcrmg/article/details/51987348)
+
+   `findContours(image,contours,hierarchy,mode,method,Point_offset)`
+
+   第一个参数: image 原图,常用经过Canny,拉普拉斯等边缘检测算子处理过的二值图像,可以是灰度图
+
+   第二和第三个参数: contours, hierarchy 可忽略,详情见链接 
+
+   第四个参数: mode 定义轮廓的检索方式
+
+   第五个参数: method 定义轮廓的近似方法
+
+   第六个参数: Point 在每一个检测出的轮廓点上加上该偏移量,一般直接忽略
+
