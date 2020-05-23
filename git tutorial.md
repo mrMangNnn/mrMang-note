@@ -6,7 +6,7 @@
 
 * **在Linux上安装git**
 
-  ​		`sudo apt-get install git`
+  1. `sudo apt-get install git`
 
 * **创建版本库(repository)**
 
