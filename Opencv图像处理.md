@@ -18,7 +18,7 @@
 
 * **利用 inRange 函数设阈值,获得二值化图像**
 
-  [参考地址](https://blog.csdn.net/hjxu2016/article/details/77834599)
+  [参考链接](https://blog.csdn.net/hjxu2016/article/details/77834599)
   
   `mask = cv2.inRange(niubi,lower,upper)`
   
@@ -34,7 +34,7 @@
 
 * **图像的腐蚀与膨胀**
 
-  [参考地址](https://blog.csdn.net/hjxu2016/article/details/77837765)
+  [参考链接](https://blog.csdn.net/hjxu2016/article/details/77837765)
 
   图像腐蚀
 
@@ -54,7 +54,7 @@
 
 * **开运算与闭运算**
 
-  [参考地址](https://blog.csdn.net/chen134225/article/details/80874367?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-2)
+  [参考链接](https://blog.csdn.net/chen134225/article/details/80874367?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-2)
 
   开运算																
 
@@ -76,7 +76,7 @@
 
 ***
 
-#### 4.滑动条操作
+#### 4.滑动条创建与调用
 
  * **创建滑动条**
 
@@ -114,7 +114,7 @@
 
 ***
 
-#### 5.边缘操作
+#### 5.边缘检测与轮廓操作
 
 * **边缘检测**
 
@@ -178,8 +178,49 @@
 
   > **利用niubi可以计算出轮廓质心的坐标**
   >
-  > **`cx=int(M['m10']/M['m00'])`**
+  > **`cx=int(niubi['m10']/niubi['m00'])`**
   >
-  > **`cy=int(M['m01']/M['m00'])`**
+  > **`cy=int(niubi['m01']/niubi['m00'])`**
 
-  
+  外接矩形,圆,拟合椭圆,形状匹配见链接
+
+***
+
+#### 6.标记目标
+
+* **轮廓**
+
+  [参考链接](https://www.jianshu.com/p/9c186c3bdfcc)
+
+  `cv2.drawContours(niubi,contours,count,(0,0,255),6)`
+
+  第一个参数: niubi 为需要绘制轮廓的图,建立一个全白的图就会只显示轮廓
+
+  第二个参数: contours 为轮廓,一般是用 findContours 得到的轮廓
+
+  第三个参数: count 为轮廓的编号,若为 -1 则绘制所有轮廓
+
+  第四个参数: (0,0,255) 为绘制的颜色, BGR 通道
+
+  第五个参数: 6 为绘制的线宽,若为负数则填充
+
+* 圆
+
+  `cv2.circle(niubi,(x,y),r,(0,0,255),6)`
+
+  第一个参数: niubi 为需要绘制圆的图,建立一个全白的图就会只显示圆
+
+  第二个参数: (x,y) 为绘制圆的中点坐标,利用目标物体的轮廓特征-图像矩可以得到
+
+  第三个参数: r 为绘制圆的半径
+
+  > **可以先用findContours + contourArea找到目标物体的面积,再利用numpy计算**
+  >
+  > **`r = numpy.sqrt(area/3.14)	##numpy.sqrt用来求开方`**
+  >
+  > **可以再用 int 转变类型	`int(r+0.5)	##加0.5使r四舍五入`**
+
+  第四个参数: (0,0,255) 为绘制圆的颜色
+
+  第五个参数: 6 为绘制的线宽,若为负数则填充
+
