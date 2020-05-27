@@ -24,8 +24,8 @@ def main():
 	RobotPanel.title = ('RobotPanel')
 	RobotPanel.geometry('300x300')
 
-	bow = Tkinter.button(RobotPanel,text = 'bow',command = lambda:bow())
-	takephoto = Tkinter.button(RobotPanel,text = 'take photo',command = lambda:takephoto())
+	bow = Tkinter.Button(RobotPanel,text = 'bow',command = lambda:bow())
+	takephoto = Tkinter.Button(RobotPanel,text = 'take photo',command = lambda:takephoto())
 	bow.grid(row = 0,column = 1)
 	takephoto.grid(row = 1,column = 1)
 	
