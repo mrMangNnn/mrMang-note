@@ -4,7 +4,7 @@ import RobotApi as ap
 
 def connect():
 	ap.ubtRobotInitialize()
-	ap.ubtRobotDisconnect('sdk','1','127.0.0.1')
+	ap.ubtRobotConnect('sdk','1','127.0.0.1')
 
 def stop():
 	ap.ubtStopRobotAction()
@@ -24,6 +24,8 @@ def getup():
 def main():
 	while(True):
 		a = raw_input('please enter to continue or input q to quit:')
+		if a == 'q':
+			break
 		if read_value() > 140 or read_value() < -140:
 			getup()
 

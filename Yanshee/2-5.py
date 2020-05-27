@@ -5,7 +5,7 @@ import Tkinter
 
 def connect():
 	ap.ubtRobotInitialize()
-	ap.ubtRobotDisconnect('sdk','1','127.0.0.1')
+	ap.ubtRobotConnect('sdk','1','127.0.0.1')
 
 def stop():
 	ap.ubtStopRobotAction()
