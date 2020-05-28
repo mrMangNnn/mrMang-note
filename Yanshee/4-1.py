@@ -25,7 +25,7 @@ def fan_tts():
 
 def main():
 	finish = False
-	face_cascade = cv.CascadeClassifier('niubi,xml')
+	face_cascade = cv.CascadeClassifier('niubi.xml')
 	cap = cv.VideoCapture(0)
 	while(True):
 		ret,image = cap.read()
