@@ -29,7 +29,7 @@ def main():
 			right()
 		elif (a == '3'):
 			pass
-		else:
+		elif (a == '4'):
 			break
 	f.close()
 	stop()
