@@ -11,7 +11,7 @@ def stop():
 	ap.ubtSetRobotLED('button','blue','breath')
 	ap.ubtStopRobotAction()
 	ap.ubtRobotDisconnect('sdk','1','127.0.0.1')
-	ap.ubtRobtoDeinitialize()
+	ap.ubtRobotDeinitialize()
 
 def fan_tts():
 	GPIO.setmode = (GPIO.BOARD)
@@ -32,7 +32,7 @@ def main():
 			fan_tts()
 			finish = True
 			break
-		cv.imshow(image)
+		cv.imshow('niubi',image)
 		if finish:
 			break
 		if cv.waitKey(10) & 0xff == ord('q'):
