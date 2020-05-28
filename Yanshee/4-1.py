@@ -1,4 +1,4 @@
-#-*-coding:ytf-8-*-
+#-*-coding:utf-8-*-
 
 import RobotApi as ap
 import RPi.GPIO as GPIO
@@ -29,6 +29,7 @@ def main():
 	cap = cv.VideoCapture(0)
 	while(True):
 		ret,image = cap.read()
+		image = cv.resize(image,(320,240))
 		image_gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY)
 		face = face_cascade.detectMultiScale(image_gray,scaleFactor = 2.0)
 		for x in face:
