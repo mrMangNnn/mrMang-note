@@ -19,9 +19,9 @@ def fan_tts():
 	ap.ubtVoiceTTS(1,'欢迎回家，已为您打开风扇，祝您生活愉快')
 	GPIO.setmode(GPIO.BOARD)
 	GPIO.setup(13,GPIO.OUT)
-	GPIO.output = (13,1)
+	GPIO.output(13,1)
 	time.sleep(5)
-	GPIO.output = (13,0)
+	GPIO.output(13,0)
 
 def main():
 	finish = False
