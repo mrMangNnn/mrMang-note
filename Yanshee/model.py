@@ -23,17 +23,16 @@ def main():
 	while(True):
 		f = open('model.txt','r')
 		a = f.read(1)
-		if (a == 1):
+		if (a == '1'):
 			left()
-		elif (a ==  2):
+		elif (a == '2'):
 			right()
-		elif (a == 3):
-			break
-		else:
+		elif (a == '3'):
 			pass
+		else:
+			break
 	f.close()
 	stop()
 
 if __name__ == '__main__':
 	main()
-	

@@ -27,7 +27,7 @@ def main():
 		dilation = cv.dilate(erodion,open_max)
 
 		contours,cnt = cv.findContours(dilation.copy(),cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)
-		if len(contours > 0):
+		if len(contours) > 0:
 			MaxArea = 0
 			MaxIndex = 0
 			index = -1
@@ -39,11 +39,11 @@ def main():
 					MaxIndex = index
 			moment = cv.moments(contours[MaxIndex])
 			if moment['m00'] > 0:
-			cx = int(moment['m10']/moment['m00'])
-			cy = int(moment['m01']/moment['m00'])
+				cx = int(moment['m10']/moment['m00'])
+				cy = int(moment['m01']/moment['m00'])
 
 			r = np.sqrt(MaxArea/3.14)
-			cr.circle(frame,(cx,cy),int(r+0.5),(35,65,43),5)
+			cv.circle(frame,(cx,cy),int(r+0.5),(35,65,43),5)
 			h1,w1 = dilation.shape
 			f = open('model.txt','w')
 			if (1.0*cx/w1 < 0.4):
@@ -53,7 +53,8 @@ def main():
 			else:
 				f.write('3')
 		cv.imshow('ball',frame)
-		if waitKey(10) & 0xff == ord('q'):
+		if cv.waitKey(10) & 0xff == ord('q'):
+			f = open('model.txt','w')
 			f.write('4')
 			break
 	f.close()
