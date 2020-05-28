@@ -12,25 +12,19 @@ def stop():
 	ap.ubtRobotDisconnect('sdk','1','127.0.0.1')
 	ap.ubtRobotDeinitialize()
 
-def left():
-	ap.ubtSetRobotMotion('raise','left',3,1)
-	ap.ubtSetRobotLED('button','yellow','blink')
-
-def right():
-	ap.ubtSetRobotMotion('raise','right',3,1)
-	ap.ubtSetRobotLED('button','green','blink')
-
 def main():
 	cap = cv.VideoCapture(0)
-	lower = np.array([0,43,46])
-	upper = np.array([10,255,255])
+	lower = np.array([23,43,46])
+	upper = np.array([44,255,255])
 	while(True):
 		ret,frame = cap.read()
 		frame = cv.resize(frame,(320,240))
 		hsv = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
 		mask = cv.inRange(hsv,lower,upper)
-		erodion = cv.erode(mask,(5,5))
-		dilation = cv.dilate(erodion,(7,7))
+		open_min = np.ones((5,5),np.uint8)
+		open_max = np.ones((7,7),np.uint8)
+		erodion = cv.erode(mask,open_min)
+		dilation = cv.dilate(erodion,open_max)
 
 		contours,cnt = cv.findContours(dilation.copy(),cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)
 		if len(contours > 0):
@@ -51,13 +45,18 @@ def main():
 			r = np.sqrt(MaxArea/3.14)
 			cr.circle(frame,(cx,cy),int(r+0.5),(35,65,43),5)
 			h1,w1 = dilation.shape
+			f = open('model.txt','w')
 			if (1.0*cx/w1 < 0.4):
-				left()
+				f.write('1')
 			elif (1.0*cx/w1 > 0.6):
-				right()
+				f.write('2')
+			else:
+				f.write('3')
 		cv.imshow('ball',frame)
 		if waitKey(10) & 0xff == ord('q'):
+			f.write('4')
 			break
+	f.close()
 
 if __name__ == '__main__':
 	connect()
