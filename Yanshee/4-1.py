@@ -1,3 +1,5 @@
+#-*-coding:ytf-8-*-
+
 import RobotApi as ap
 import RPi.GPIO as GPIO
 import time
@@ -14,8 +16,9 @@ def stop():
 	ap.ubtRobotDeinitialize()
 
 def fan_tts():
-	GPIO.setmode = (GPIO.BOARD)
-	GPIO.setout = (13,GPIO.OUT)
+	ap.ubtVoiceTTS(1,'欢迎回家，已为您打开风扇，祝您生活愉快')
+	GPIO.setmode(GPIO.BOARD)
+	GPIO.setup(13,GPIO.OUT)
 	GPIO.output = (13,1)
 	time.sleep(5)
 	GPIO.output = (13,0)
