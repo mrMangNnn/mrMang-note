@@ -1,5 +1,7 @@
 import RobotApi as ap
 import cv2 as cv
+import multiprocessing
+import time
 import numpy as np
 
 def connect():
@@ -59,7 +61,39 @@ def main():
 			break
 	f.close()
 
+def left():
+	RobotApi.ubtSetRobotMotion('raise','left',2,1)
+	RobotApi.ubtSetRobotLED('button','yellow','blink')
+
+def right():
+	RobotApi.ubtSetRobotMotion('raise','right',2,1)
+	RobotApi.ubtSetRobotLED('button','green','blink')
+
+def action():
+	count = 1
+	time.sleep(1)
+	while(True):
+		f = open('model.txt','r')
+		model = f.read(1)
+		if (count == 1):
+			if (model == '4'):
+				continue
+			else:
+				count += 1
+		if (model == '1'):
+			left()
+		elif (model == '2'):
+			right()
+		elif (model == '3'):
+			pass
+		elif (model == '4'):
+			break
+	
+
 if __name__ == '__main__':
 	connect()
-	main()
+	p1 = multiprocessing.Process(target = main,args = ())
+	p2 = multiprocessing.Process(target = action,args = ())
+	p1.start
+	p2.start
 	stop()
