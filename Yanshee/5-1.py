@@ -16,8 +16,8 @@ def stop():
 
 def main():
 	cap = cv.VideoCapture(0)
-	lower = np.array([23,43,46])
-	upper = np.array([44,255,255])
+	lower = np.array([21,43,46])
+	upper = np.array([29,255,255])
 	while(True):
 		ret,frame = cap.read()
 		frame = cv.resize(frame,(320,240))
@@ -62,12 +62,12 @@ def main():
 	f.close()
 
 def left():
-	RobotApi.ubtSetRobotMotion('raise','left',2,1)
-	RobotApi.ubtSetRobotLED('button','yellow','blink')
+	ap.ubtSetRobotMotion('raise','left',2,1)
+	ap.ubtSetRobotLED('button','yellow','blink')
 
 def right():
-	RobotApi.ubtSetRobotMotion('raise','right',2,1)
-	RobotApi.ubtSetRobotLED('button','green','blink')
+	ap.ubtSetRobotMotion('raise','right',2,1)
+	ap.ubtSetRobotLED('button','green','blink')
 
 def action():
 	count = 1
@@ -88,12 +88,11 @@ def action():
 			pass
 		elif (model == '4'):
 			break
-	
+	stop()	
 
 if __name__ == '__main__':
 	connect()
 	p1 = multiprocessing.Process(target = main,args = ())
 	p2 = multiprocessing.Process(target = action,args = ())
-	p1.start
-	p2.start
-	stop()
+	p1.start()
+	p2.start()
