@@ -55,6 +55,20 @@
 >
 > **`sudo rosdep init`**
 >
+> 初始化 rosdep 出现 **cannot download default sources list from:【closed】**错误解决方案
+>
+> 打开hosts文件
+>
+> **`sudo gedit /etc/hosts`**
+>
+> 在文件末尾添加
+>
+> **`151.101.84.133  raw.githubusercontent.com`**
+>
+> 保存退出后重新尝试
+>
+> **`sudo rosdep init`**
+>
 > **`rosdep update`**
 
 ### 二、
