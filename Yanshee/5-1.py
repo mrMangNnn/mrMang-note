@@ -4,11 +4,11 @@ import multiprocessing
 import time
 import numpy as np
 
-def connect():
+def connect():		
 	ap.ubtRobotInitialize()
 	ap.ubtRobotConnect('sdk','1','127.0.0.1')
 
-def stop():
+def stop(): 		
 	ap.ubtSetRobotLED('button','blue','breath')
 	ap.ubtStopRobotAction()
 	ap.ubtRobotDisconnect('sdk','1','127.0.0.1')
@@ -46,6 +46,7 @@ def main():
 
 			r = np.sqrt(MaxArea/3.14)
 			cv.circle(frame,(cx,cy),int(r+0.5),(35,65,43),5)
+
 			h1,w1 = dilation.shape
 			f = open('model.txt','w')
 			if (1.0*cx/w1 < 0.4):
@@ -61,15 +62,15 @@ def main():
 			break
 	f.close()
 
-def left():
+def left():		
 	ap.ubtSetRobotMotion('raise','left',2,1)
 	ap.ubtSetRobotLED('button','yellow','blink')
 
-def right():
+def right():		
 	ap.ubtSetRobotMotion('raise','right',2,1)
 	ap.ubtSetRobotLED('button','green','blink')
 
-def action():
+def action():	
 	count = 1
 	time.sleep(1)
 	while(True):
@@ -90,7 +91,7 @@ def action():
 			break
 	stop()	
 
-if __name__ == '__main__':
+if __name__ == '__main__':		
 	connect()
 	p1 = multiprocessing.Process(target = main,args = ())
 	p2 = multiprocessing.Process(target = action,args = ())

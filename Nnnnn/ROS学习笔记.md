@@ -14,9 +14,9 @@
 
 1.2.1 [ROS wiki](http://wiki.ros.org/ROS/Installation)
 
-	>系统：Ubuntu 16.04
-	>
-	>ROS版本：Kinetic
+>系统：Ubuntu 16.04
+>
+>ROS版本：Kinetic
 
 1.2.2 设置ROS源
 
@@ -71,7 +71,25 @@
 >
 > **`rosdep update`**
 
-### 二、
+***
+
+### 二、ROS工程
+
+#### 2.1 ROS工作空间
+
+2.1.1 新建一个工作空间
+
+> 创建文件夹
+>
+> **`mkdir -p ~/ros_workspace/src`**
+>
+> 打开终端，在 ros_workspace 目录下编译工作空间
+>
+> **`catkin_make`**
+>
+> 在
+
+
 
 
 
