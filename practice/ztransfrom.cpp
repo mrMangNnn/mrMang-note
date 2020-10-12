@@ -23,7 +23,7 @@ int main()
 		vertical = vertical+u-num+1;
 	}
 	
-	vector<vector<char> > transform(vertical+1, vector<char>(num,' '));
+	vector<vector<char> > transform(vertical+2, vector<char>(num,' '));
 	
 	int k=0,l=2;
 	for (int i=0; i<vertical; i++)
@@ -51,6 +51,14 @@ int main()
 	for (int i=0; i<num; i++)
 	{
 		transform[vertical][i] = ' ';
+		transform[vertical+1][i] = ' ';
+	}
+	if (a.size()<num)
+	{
+		for (int i=a.size(); i<num; i++)
+		{
+			transform[0][i] = ' ';
+		}
 	}
 	
 	for (int i=0; i<num; i++)
@@ -65,12 +73,15 @@ int main()
 	int count=1;
 	for (int i=0; i<num; i++)
 	{
-		for (int j=0; j<=vertical; j=j+num-1)
+		for (int j=0; j<=vertical+1; j=j+num-1)
 		{
 			if (i!=0 && i!=num-1 && j>0)
-			{
-				cout << transform[j-count][i];
-				count++;
+			{			
+				if (transform[j-count][i]!=' ')
+				{
+					cout << transform[j-count][i];
+					count++;	
+				}	
 			}
 			if (count>num-2)
 			{
