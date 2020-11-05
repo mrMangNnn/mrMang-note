@@ -10,6 +10,8 @@
 
 ​		`niubi = cv2.cvtColor(image,cv2.COLOR_RGB2GRAY)  ##将rgb图像转化为灰度图`
 
+***
+
 #### 2. 二值化图像
 
 * **将rgb图像转化为hsv图像**
